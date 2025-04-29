@@ -1,0 +1,99 @@
+$(document).ready(function(){
+    
+    // Summon Branding styles Summer 2021 Sasha Castillo
+    $(".siteHeader img.img-responsive.logo").attr("ng-src", "https://library.auraria.edu/sites/default/files/images/systems/summon/summon-logo2021.png").attr("src", "https://library.auraria.edu/sites/default/files/images/systems/summon/summon-logo2021.png");
+    $(".home img.img-responsive.logo").attr("ng-src", "https://library.auraria.edu/sites/default/files/images/systems/summon/summon-home-logo2021.png").attr("src", "https://library.auraria.edu/sites/default/files/images/systems/summon/summon-home-logo2021.png");
+  
+    $('head').append('<style>.customHeaderButtonBackground { background-color: #CF4520 !important } ul.list-inline.list-unstyled.customLinks {display:flex !important; } .siteHeader {border-bottom: 5px solid #CF4520;} @media (min-width: 1024px) { .customLinks>li .btn-link {font-size: 1em !important;} .siteHeader { height: 85px !important; padding-top: 1.8em !important; } img.logo { max-height: 45px !important; margin-top: -3px !important; } body.vpnBannerAdjust { padding-top: 8px !important; } .home .logo {max-height: 85px !important; margin-top: 12em !important;} .home img.logo {height: 85px;}}</style>');
+  
+  
+    //Add Google Tag Manager Summer 2021 Sasha Castillo
+      $( "body" ).prepend( "<script>var vPagePath = window.location.href;dataLayer = [{'virtualURL': vPagePath}];</script><noscript><iframe src='//www.googletagmanager.com/ns.html?id=GTM-WCM7MLG' height='0' width='0' style='display:none;visibility:hidden'></iframe></noscript><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WCM7MLG');</script>");
+  
+  });
+  
+  /* add additional custom links in Summon 2.0 */
+  angular.module('summonApp').run(['configService', function (config) {
+      config.data.links.custom1 = {
+          href: "http://library.auraria.edu",
+          label: "Auraria Library"
+      }
+      config.data.links.custom2 = {
+          href: "http://prospectorhome.coalliance.org/",
+          label: "Colorado (Prospector)"
+      }
+      config.data.links.custom3 = {
+          href: "http://aurarialibrary.worldcat.org/advancedsearch",
+          label: "WorldCat"
+      }
+  
+  }]);
+  
+  var browzine = {
+    api: "https://public-api.thirdiron.com/public/v1/libraries/2491",
+    apiKey: "60541047-488b-4394-82d3-17ef2f387126",
+   
+    journalCoverImagesEnabled: true,
+   
+    journalBrowZineWebLinkTextEnabled: true,
+    journalWording: "View the Journal",
+    journalBrowZineWebLinkText: "Browse Now",
+   
+    articleBrowZineWebLinkTextEnabled: true,
+    articleWording: "View Complete Issue",
+    articleBrowZineWebLinkText: "Browse Now",
+   
+    articlePDFDownloadLinkEnabled: true,
+    articlePDFDownloadWording: "Article PDF",
+    articlePDFDownloadLinkText: "Download Now",
+   
+    articleLinkEnabled: true,
+    articleLinkTextWording: "Article Link",
+    articleLinkText: "Read Article",
+   
+    unpaywallEmailAddressKey: "enter-your-email@your-institution-domain.edu",
+   
+    articlePDFDownloadViaUnpaywallEnabled: true,
+    articlePDFDownloadViaUnpaywallWording: "Article PDF",
+    articlePDFDownloadViaUnpaywallLinkText: "Download Now (via Unpaywall)",
+   
+    articleLinkViaUnpaywallEnabled: true,
+    articleLinkViaUnpaywallWording: "Article Link",
+    articleLinkViaUnpaywallLinkText: "Read Article (via Unpaywall)",
+   
+    articleAcceptedManuscriptPDFViaUnpaywallEnabled: true,
+    articleAcceptedManuscriptPDFViaUnpaywallWording: "Article PDF",
+    articleAcceptedManuscriptPDFViaUnpaywallLinkText: "Download Now (Accepted Manuscript via Unpaywall)",
+   
+    articleAcceptedManuscriptArticleLinkViaUnpaywallEnabled: true,
+    articleAcceptedManuscriptArticleLinkViaUnpaywallWording: "Article Link",
+    articleAcceptedManuscriptArticleLinkViaUnpaywallLinkText: "Read Article (Accepted Manuscript via Unpaywall)",
+  };
+   
+  browzine.script = document.createElement("script");
+  browzine.script.src = "https://s3.amazonaws.com/browzine-adapters/summon/browzine-summon-adapter.js";
+  document.head.appendChild(browzine.script);
+
+  /*****************************************
+   StackMap Code added 7-5-22 by M. Schaming
+  ******************************************/
+   (function() {
+    var script = document.createElement('script');
+           script.id = 'StackMapScript';
+           script.src = 'https://www.stackmapintegration.com/cudenver-summon/StackMap.min.js';
+           document.body.appendChild(script);
+        
+           var smlink1 = document.createElement('link');
+           smlink1.id = 'StackMapSheet';
+           smlink1.rel = 'stylesheet';
+           smlink1.media = 'all';
+           smlink1.type = 'text/css';
+           smlink1.href = 'https://www.stackmapintegration.com/cudenver-summon/StackMap.min.css';
+           document.body.appendChild(smlink1);
+    
+    var smlink2 = document.createElement('link');
+    smlink2.rel = 'stylesheet';
+    smlink2.type = 'text/css';
+    smlink2.href = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css';
+    document.body.appendChild(smlink2);
+    })();
